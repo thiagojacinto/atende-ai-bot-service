@@ -1,0 +1,23 @@
+{
+  "name": "atende-ai-bot-service",
+  "version": "1.0.0",
+  "description": "Bot application that performs scheduling activities with some of Twilio's APIs",
+  "main": "src/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thiagojacinto/atende-ai-bot-service.git"
+  },
+  "keywords": [
+    "nodejs",
+    "twilio-api"
+  ],
+  "author": "Thiago Jacinto",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thiagojacinto/atende-ai-bot-service/issues"
+  },
+  "homepage": "https://github.com/thiagojacinto/atende-ai-bot-service#readme"
+}
