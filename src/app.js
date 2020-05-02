@@ -13,7 +13,7 @@ const messagingResponse = twilio.twiml.MessagingResponse;
 const app = express();
 app.use(bodyParser.urlencoded({extended:false}));
 
-app.get('/', (request, response) => {
+app.get('/saudar', (request, response) => {
 
   cliente.messages.create({
     from: 'whatsapp:+14155238886',
@@ -22,12 +22,11 @@ app.get('/', (request, response) => {
   }).then(console.log);
 });
 
-
 app.post('/resposta', (request, response) => {
   const msgRecebida = request.body.Body;
   const msgResposta = new messagingResponse();
   
-  msgRecebida.message(`Certo, você digitou '${msgRecebida}'. Aguarde enquanto acerto alguns detalhes ...`);
+  msgResposta.message(`Certo, você digitou '${msgRecebida}'. Aguarde enquanto acerto alguns detalhes ...`);
   response.send(msgResposta.toString());
 });
 
