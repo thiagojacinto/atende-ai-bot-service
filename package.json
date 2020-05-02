@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/thiagojacinto/atende-ai-bot-service/issues"
   },
-  "homepage": "https://github.com/thiagojacinto/atende-ai-bot-service#readme"
+  "homepage": "https://github.com/thiagojacinto/atende-ai-bot-service#readme",
+  "dependencies": {
+    "twilio": "^3.43.0"
+  }
 }
