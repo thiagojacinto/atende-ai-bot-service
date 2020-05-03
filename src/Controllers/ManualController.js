@@ -1,4 +1,5 @@
 const twilio = require('twilio');
+const config = require('../config');
 const cliente = twilio(config.ACC_SID, config.TOKEN);
 const messagingResponse = twilio.twiml.MessagingResponse;
 
