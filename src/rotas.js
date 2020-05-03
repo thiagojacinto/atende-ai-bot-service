@@ -4,14 +4,15 @@ const twilio = require('twilio');
 
 const rotas = Router();
 const ManualController = require('./Controllers/ManualController');
+const AgendaController = require('./Controllers/AgendaController');
 
-rotas.post('/v1/agendar', );
-rotas.get('/v1/agendamentos', ); 
+rotas.post('/v1/agendar', AgendaController.store);
+rotas.get('/v1/agendamentos', AgendaController.index); 
 
 // Rotas manuais
 
-rotas.get('/alpha/saudar', ManualController.enviarMensagem(req, res, null));
+rotas.get('/alpha/saudar', ManualController.enviarMensagem);
 
-rotas.post('/alpha/resposta', ManualController.responderAposProvocacao(req, res));
+rotas.post('/alpha/resposta', ManualController.responderAposProvocacao);
 
 module.exports = rotas;
