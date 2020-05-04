@@ -7,7 +7,8 @@ const ManualController = require('./Controllers/ManualController');
 const AgendaController = require('./Controllers/AgendaController');
 
 rotas.post('/v1/agendar', AgendaController.store);
-rotas.get('/v1/agendamentos', AgendaController.index); 
+rotas.get('/v1/agendamentos', AgendaController.index);
+rotas.post('/v1/confirmar', AgendaController.confirmar); 
 
 // Rotas manuais
 
