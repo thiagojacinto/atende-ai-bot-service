@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const AgendamentoSchema = new mongoose.Schema({
   telefone: String,
@@ -6,6 +6,11 @@ const AgendamentoSchema = new mongoose.Schema({
   observacoes: String,
   confirmacao: Boolean,
   maps: String,
+}, {
+  timestamps: {
+    createdAt: 'created_at',
+    updatedAt: 'updated_at',
+  }
 });
 
-module.exports = mongoose.model('Agendamento', AgendamentoSchema);
+module.exports = mongoose.model("Agendamento", AgendamentoSchema);
