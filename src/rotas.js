@@ -8,7 +8,8 @@ const AgendaController = require('./Controllers/AgendaController');
 
 rotas.post('/v1/agendar', AgendaController.store);
 rotas.get('/v1/agendamentos', AgendaController.index);
-rotas.post('/v1/confirmar', AgendaController.confirmar); 
+rotas.post('/v1/agendamento', AgendaController.show);
+rotas.post('/v1/confirmacao', AgendaController.toggleConfirmation); 
 
 // Rotas manuais
 
