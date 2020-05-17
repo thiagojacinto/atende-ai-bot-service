@@ -27,20 +27,29 @@ module.exports = {
     return response.json(agend);
   },
 
-  async confirmar(request, response) {
+  async show(request, response) {
     const { telefone } = request.body;
 
-    // most recent = min(Date() - updated_at)
+    let result = await Agendamento.findOne(
+      { "telefone": telefone },
+    ).then(response.status(200))
+    .catch(console.error);
 
-    // const query = await Agendamento.find({ 'telefone': telefone })
-    //   .where('confirmacao').equals(false)
-    //   .limit(1)
-    //   .exec( (confirmacao, err) => {
-    //     if (err) return err;
-    //   });
+    return response.json(result);
+  },
 
-    // query[0].confirmacao = true;
-    
-    return response.json(query);
+  async toggleConfirmation(request, response) {
+    const { telefone } = request.body;
+    let agendamento = await Agendamento.findOne({ "telefone": telefone })
+      .catch(console.error);
+
+    // updating information:
+    agendamento.confirmacao = !agendamento.confirmacao;
+    agendamento.observacoes = agendamento.observacoes.concat(`, ${agendamento.confirmacao ? 'confirmado' : 'desmarcado' } em ${Date.now().toLocaleString('pt-BR')}`);
+    await agendamento.save()
+      .then(response.status(200).send(`Agendamento ${agendamento.confirmacao ? 'confirmado' : 'desmarcado'}.`))
+      .catch(console.error);
+      
+    return response;
   }
 }
