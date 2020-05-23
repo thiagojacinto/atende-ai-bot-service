@@ -42,10 +42,10 @@ module.exports = {
     const { telefone } = request.body;
     let agendamento = await Agendamento.findOne({ "telefone": telefone })
       .catch(console.error);
-
+    
     // updating information:
     agendamento.confirmacao = !agendamento.confirmacao;
-    agendamento.observacoes = agendamento.observacoes.concat(`, ${agendamento.confirmacao ? 'confirmado' : 'desmarcado' } em ${Date.now().toLocaleString('pt-BR')}`);
+    agendamento.observacoes = agendamento.observacoes.concat(`, ${agendamento.confirmacao ? 'confirmado' : 'desmarcado' } em ${new Date().toLocaleDateString('pt-BR')}`);
     await agendamento.save()
       .then(response.status(200).send(`Agendamento ${agendamento.confirmacao ? 'confirmado' : 'desmarcado'}.`))
       .catch(console.error);
