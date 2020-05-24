@@ -8,7 +8,6 @@ module.exports = {
   },
 
   async store(request, response) {
-    console.log(`Body element: ${request.body}`); // DEBUG
     const { telefone, observacoes, confirmacao, maps } = request.body;
 
     await Agendamento.findOne(
@@ -44,6 +43,17 @@ module.exports = {
       .catch(console.error);
 
     return response.json(result);
+  },
+
+  async destroy(request, response) {
+    const { telefone } = request.body;
+    await Agendamento.findOneAndDelete(
+      { telefone: telefone },
+      (err, removido) => {
+        if (err) return response.status(500).send(err);
+        return response.status(200).json(removido);
+      }
+    );
   },
 
   async toggleConfirmation(request, response) {
